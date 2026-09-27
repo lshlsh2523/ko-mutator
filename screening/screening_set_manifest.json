@@ -1,0 +1,112 @@
+{
+  "created_at": "2026-09-27T21:00:07",
+  "rows": 2450,
+  "seeds": 70,
+  "techniques": 17,
+  "intensities": [
+    0.3,
+    0.7
+  ],
+  "rows_by_category": {
+    "A1_injection": 875,
+    "A2_leaking": 875,
+    "benign_hard_negative": 700
+  },
+  "readability_targets": 1680,
+  "mutation_seed": 20260926,
+  "mutator_git": {
+    "commit": "e80f0ae2aa578c9465b8977e1b875029aed15ee5",
+    "describe": "mutator-v1-3-ge80f0ae",
+    "dirty": false
+  },
+  "canary_version": "v2",
+  "input_file": "seeds_screening.jsonl",
+  "input_sha256": "ece8a87cb7f712eff8f1d4d8c3e569104e949ca77486138135b87258e70b46a6",
+  "per_technique": {
+    "jamo_decompose": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "chosung": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "tensify": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "zwsp_inject": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "space_delete": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "space_insert": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "final_decompose": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "filler_insert": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "qwerty": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "vowel_replace": {
+      "applied_0.3": 65,
+      "applied_0.7": 68,
+      "same_0.3_0.7": 14
+    },
+    "final_replace": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "continue_sound": {
+      "applied_0.3": 48,
+      "applied_0.7": 63,
+      "same_0.3_0.7": 21
+    },
+    "yamin_swap": {
+      "applied_0.3": 66,
+      "applied_0.7": 69,
+      "same_0.3_0.7": 7
+    },
+    "syllable_shuffle": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 1
+    },
+    "symbol_insert": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "romanize": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    },
+    "iconic_swap": {
+      "applied_0.3": 70,
+      "applied_0.7": 70,
+      "same_0.3_0.7": 0
+    }
+  }
+}
