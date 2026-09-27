@@ -1,4 +1,4 @@
-"""회의용 검수표 생성: 문장 × 13종 × 강도 2단계 결과를 review_sheet.md로 저장."""
+"""회의용 검수표 생성: 문장 × 17종 × 강도 2단계 결과를 review_sheet.md로 저장."""
 from registry import SOURCE, TRANSFORMS
 
 SENTENCES = {

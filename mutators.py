@@ -8,11 +8,19 @@
 """
 import random
 
-from core import CHO, JUNG, JONG, split, join, pick
+from core import CHO, JUNG, JONG, split, join, pick, candidates
 
 ZWSP = '\u200b'
 # 평음 초성 인덱스 → 경음 초성 인덱스 (ㄱ→ㄲ, ㄷ→ㄸ, ㅂ→ㅃ, ㅅ→ㅆ, ㅈ→ㅉ)
 TENSE_IDX = {0: 1, 3: 4, 7: 8, 9: 10, 12: 13}
+
+
+def _is_plain_cho(ch):
+    return split(ch)[0] in TENSE_IDX
+
+
+def _has_final(ch):
+    return split(ch)[2] != 0
 
 
 # ---------------------------------------------------------------
@@ -40,8 +48,7 @@ def chosung(text, intensity=1.0, seed=0):
 
 def tensify(text, intensity=1.0, seed=0):
     """된소리화: 시스템 → 씨스템 (평음 초성이 있는 음절만 후보)"""
-    sel = pick(text, intensity, random.Random(seed),
-               cond=lambda ch: split(ch)[0] in TENSE_IDX)
+    sel = pick(text, intensity, random.Random(seed), cond=_is_plain_cho)
     out = []
     for i, ch in enumerate(text):
         if i in sel:
@@ -90,8 +97,7 @@ def space_insert(text, intensity=1.0, seed=0):
 # ---------------------------------------------------------------
 def final_decompose(text, intensity=1.0, seed=0):
     """받침만 분리: 폭탄 → 포ㄱ타ㄴ (Yu et al. 2024 DECOMPOSE_final)"""
-    sel = pick(text, intensity, random.Random(seed),
-               cond=lambda ch: split(ch)[2] != 0)
+    sel = pick(text, intensity, random.Random(seed), cond=_has_final)
     out = []
     for i, ch in enumerate(text):
         if i in sel:
@@ -156,4 +162,17 @@ TRANSFORMS = {
     'final_decompose': final_decompose,
     'filler_insert': filler_insert,
     'qwerty': qwerty,
+}
+
+
+CANDIDATES = {
+    'jamo_decompose': lambda t: candidates(t),
+    'chosung': lambda t: candidates(t),
+    'tensify': lambda t: candidates(t, _is_plain_cho),
+    'zwsp_inject': lambda t: candidates(t),
+    'space_delete': lambda t: [i for i, ch in enumerate(t) if ch == ' '],
+    'space_insert': lambda t: candidates(t),
+    'final_decompose': lambda t: candidates(t, _has_final),
+    'filler_insert': lambda t: candidates(t),
+    'qwerty': lambda t: candidates(t),
 }

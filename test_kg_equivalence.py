@@ -2,7 +2,11 @@
 import itertools
 import sys
 
-sys.path.insert(0, 'third_party/koreanguardrail')
+from pathlib import Path
+KG_DIR = Path(__file__).resolve().parent / 'data' / 'KoreanGuardrail'
+if not (KG_DIR / 'ko_obfuscator.py').exists():
+    sys.exit('data/KoreanGuardrail/ko_obfuscator.py 가 없습니다. 먼저 python download_kg.py 를 실행하세요.')
+sys.path.insert(0, str(KG_DIR))
 import ko_obfuscator as kg  # noqa: E402
 import mutators as m  # noqa: E402
 
@@ -37,3 +41,4 @@ for s, sd in itertools.product(SENTS, SEEDS):
             print('FAIL space_insert', repr(s), it, sd)
 
 print(f'대조 {total}건, 불일치 {fail}건')
+import sys; sys.exit(1 if fail else 0)

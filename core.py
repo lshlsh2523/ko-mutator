@@ -33,15 +33,18 @@ def join(cho, jung, jong):
     return chr(BASE + cho * 588 + jung * 28 + jong)
 
 
+def candidates(text, cond=None):
+    """변형 후보가 되는 한글 음절 위치 목록. cond로 후보를 더 거를 수 있다."""
+    return [i for i, ch in enumerate(text)
+            if is_syl(ch) and (cond is None or cond(ch))]
+
+
 def pick(text, intensity, rng, cond=None):
     """
     한글 음절 위치 중 intensity 비율만큼 선택.
 
-    rng: random.Random 객체. 호출하는 쪽에서 random.Random(seed)로 만든다.
-    cond: 후보 음절을 거르는 함수 (예: 평음 초성만, 받침 있는 음절만).
-          None이면 원본 KG의 _pick과 동일하게 동작한다.
+    rng: random.Random 객체. cond: 후보를 거르는 함수 (None이면 원본 KG와 동일).
     """
-    idx = [i for i, ch in enumerate(text)
-           if is_syl(ch) and (cond is None or cond(ch))]
+    idx = candidates(text, cond)
     k = round(len(idx) * intensity)
     return set(rng.sample(idx, k)) if k else set()
