@@ -2,9 +2,8 @@
 
 mutate()는 변형 결과와 함께 변경량(후보 수, 바꾼 수, 변화 여부)을 돌려준다.
 """
-import kotox_ports
-import mutators
-from core import is_syl
+from . import kotox_ports, mutators
+from .core import is_syl
 
 TRANSFORMS = {**mutators.TRANSFORMS, **kotox_ports.TRANSFORMS}
 CANDIDATES = {**mutators.CANDIDATES, **kotox_ports.CANDIDATES}

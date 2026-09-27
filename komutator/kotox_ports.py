@@ -41,7 +41,7 @@ import random
 import unicodedata
 from pathlib import Path
 
-from core import CHO, JUNG, JONG, is_syl, split, join, pick, candidates
+from .core import CHO, JUNG, JONG, is_syl, split, join, pick, candidates
 
 RULES_DIR = Path(__file__).parent / 'rules'
 
@@ -256,7 +256,7 @@ def symbol_insert(text, intensity=1.0, seed=0):
     return ''.join(out)
 
 
-# 자모 도상 대치: 초성만 모양이 닮은 문자로 (달라진 점 13). 사전 생성: rules/build_iconic_cho.py
+# 자모 도상 대치: 초성만 모양이 닮은 문자로 (달라진 점 13). 사전 생성: komutator/rules/build_iconic_cho.py
 _ICONIC_CHO = _load('iconic_cho.json')   # 초성 → 닮은꼴 문자 (숫자 포함, 두 글자·한글 제외)
 
 

@@ -1,6 +1,8 @@
 """KoreanGuardrail 데이터셋 다운로드 (버전 고정)."""
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parent.parent   # 레포 루트 (어느 폴더에서 실행해도 같은 위치에 저장)
+
 from huggingface_hub import HfApi, snapshot_download
 
 REPO = "kimchunsik03/KoreanGuardrail"
@@ -14,9 +16,9 @@ path = snapshot_download(
     repo_id=REPO,
     repo_type="dataset",
     revision=sha,
-    local_dir="data/KoreanGuardrail",
+    local_dir=str(ROOT / "data" / "KoreanGuardrail"),
 )
 print("저장 위치:", path)
 
 # 3. 버전을 파일로 기록 (논문·재현용)
-Path("data_revision.txt").write_text(f"{REPO} {sha}\n", encoding="utf-8")
+(ROOT / "data_revision.txt").write_text(f"{REPO} {sha}\n", encoding="utf-8")

@@ -1,5 +1,10 @@
-"""회의용 검수표 생성: 문장 × 17종 × 강도 2단계 결과를 review_sheet.md로 저장."""
-from registry import SOURCE, TRANSFORMS
+"""회의용 검수표 생성: 문장 × 17종 × 강도 2단계 결과를 docs/review_sheet.md로 저장."""
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from komutator.registry import SOURCE, TRANSFORMS  # noqa: E402
 
 SENTENCES = {
     '정상': [
@@ -32,6 +37,6 @@ for label, sents in SENTENCES.items():
             lines.append(f'| {name} | {SOURCE[name]} | {cells[0]} | {cells[1]} |')
         lines.append('')
 
-with open('review_sheet.md', 'w', encoding='utf-8') as f:
+with open(ROOT / 'docs' / 'review_sheet.md', 'w', encoding='utf-8') as f:
     f.write('\n'.join(lines))
-print(f'review_sheet.md 저장 완료 ({len(lines)}줄)')
+print(f'docs/review_sheet.md 저장 완료 ({len(lines)}줄)')

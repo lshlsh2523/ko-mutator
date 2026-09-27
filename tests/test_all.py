@@ -7,11 +7,14 @@
 """
 import re
 import sys
+from pathlib import Path
 
-from core import JUNG, JONG, is_syl, split, join
-from registry import TRANSFORMS, CANDIDATES, CATEGORY, READABILITY_SKIP, mutate
-import kotox_ports as k
-import mutators as m
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))   # 레포 루트
+
+from komutator.core import JUNG, JONG, is_syl, split, join
+from komutator.registry import TRANSFORMS, CANDIDATES, CATEGORY, READABILITY_SKIP, mutate
+from komutator import kotox_ports as k
+from komutator import mutators as m
 
 results = []
 

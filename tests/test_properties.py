@@ -1,8 +1,12 @@
 """mutators.py 속성 검증: 재현성, 강도 구분, 비한글 보존, 신규 3종 정확성."""
 import re
+import sys
+from pathlib import Path
 
-import mutators as m
-from core import JONG, is_syl, split, join
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))   # 레포 루트
+
+from komutator import mutators as m
+from komutator.core import JONG, is_syl, split, join
 
 results = []
 

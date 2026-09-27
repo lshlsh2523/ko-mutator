@@ -8,7 +8,7 @@
 """
 import random
 
-from core import CHO, JUNG, JONG, split, join, pick, candidates
+from .core import CHO, JUNG, JONG, split, join, pick, candidates
 
 ZWSP = '\u200b'
 # 평음 초성 인덱스 → 경음 초성 인덱스 (ㄱ→ㄲ, ㄷ→ㄸ, ㅂ→ㅃ, ㅅ→ㅆ, ㅈ→ㅉ)

@@ -5,7 +5,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
-from registry import TRANSFORMS  # noqa: E402
+from komutator.registry import TRANSFORMS  # noqa: E402
 from canary import A1_TOKEN, CONFIG, apply_canary, judge  # noqa: E402
 
 results = []

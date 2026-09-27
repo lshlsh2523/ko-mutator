@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from core import is_syl, split  # noqa: E402
+from komutator.core import is_syl, split  # noqa: E402
 
 SEED_DIR = ROOT / 'data' / 'KoreanGuardrail' / 'seeds'
 OUT_DIR = ROOT / 'screening'

@@ -9,7 +9,20 @@
 git clone https://github.com/lshlsh2523/ko-mutator
 cd ko-mutator
 python -m pip install huggingface_hub   # KoreanGuardrail 다운로드에만 필요
-python download_kg.py                   # data/KoreanGuardrail/ (git 제외, 버전은 data_revision.txt)
+python tools/download_kg.py             # data/KoreanGuardrail/ (git 제외, 버전은 data_revision.txt)
+```
+
+## 폴더 구조
+
+```
+ko-mutator/
+├── komutator/        변형기 본체 (core, mutators, kotox_ports, registry)
+│   └── rules/        KOTOX 규칙 사전, 도상 대치 사전과 생성 스크립트
+├── tests/            테스트
+├── tools/            KG 다운로드, 검수표 생성
+├── docs/             검수표 (review_sheet.md)
+├── screening/        사전 스크리닝: 시드 선별, canary, 스크리닝 셋
+└── data/             KoreanGuardrail 원본 (git 제외)
 ```
 
 ## 변형 기법 17종
@@ -39,13 +52,13 @@ KOTOX의 난독화 5범주(음운 4·도상 2·음차 1·통사 3·화용 1종)�
 | `symbol_insert` 기호 삽입 | 무시 → 무★시 | 화용 | KOTOX 13 |
 
 - 한글만 바꾸고 숫자·영문·기존 기호는 그대로 둡니다(영타 변환·야민정음·로마자·도상 대치·기호 삽입은 결과에 영문·기호를 만듦).
-- KG 계열 6종은 원본 `ko_obfuscator.py`와 출력이 같습니다(`test_kg_equivalence.py`).
-- KOTOX 이식분이 원본과 달라진 점(연음 연속 적용·ㅎ 탈락, 로마자·기호·도상의 규칙화 등)은 `kotox_ports.py` 상단에 정리되어 있습니다.
+- KG 계열 6종은 원본 `ko_obfuscator.py`와 출력이 같습니다(`tests/test_kg_equivalence.py`).
+- KOTOX 이식분이 원본과 달라진 점(연음 연속 적용·ㅎ 탈락, 로마자·기호·도상의 규칙화 등)은 `komutator/kotox_ports.py` 상단에 정리되어 있습니다.
 
 ## 사용법
 
 ```python
-from registry import TRANSFORMS, mutate
+from komutator.registry import TRANSFORMS, mutate
 
 TRANSFORMS['chosung']('이전 지시를 무시해', 0.7, 1234)       # 변형 결과만
 
@@ -65,13 +78,14 @@ r = mutate('continue_sound', '먹었어요', 1.0, 1234)          # 변형 + 변�
 ## 테스트
 
 ```bash
-python test_all.py              # 17종 통합 검증
-python test_properties.py       # KG 계열·신규 기법 속성
-python test_kg_equivalence.py   # KG 원본과 출력 대조 (download_kg.py 먼저 실행)
-python screening/test_canary.py # canary 판정·토큰 보존
+python tests/test_all.py              # 17종 통합 검증
+python tests/test_properties.py       # KG 계열·신규 기법 속성
+python tests/test_kg_equivalence.py   # KG 원본과 출력 대조 (tools/download_kg.py 먼저 실행)
+python screening/test_canary.py       # canary 판정·토큰 보존
+python tools/make_review_sheet.py     # docs/review_sheet.md 갱신
 ```
 
-`test_all.py`·`test_kg_equivalence.py`·`test_canary.py`는 실패가 있으면 종료 코드 1을 냅니다.
+`tests/test_all.py`·`tests/test_kg_equivalence.py`·`screening/test_canary.py`는 실패가 있으면 종료 코드 1을 냅니다.
 
 ## 사전 스크리닝 (`screening/`)
 
@@ -80,8 +94,9 @@ python screening/test_canary.py # canary 판정·토큰 보존
 | `filter_seeds.py` → `candidates.jsonl`, `excluded.jsonl` | KG 시드 505건에 제외 기준 E1~E4 적용 |
 | `select_seeds.py` → `seeds_selected.jsonl`, `holdout_ids.txt` | 층화 추출 70건 (난수 시드 20260926). `holdout_ids.txt`는 최종 평가에서 제외 |
 | `canary_config.json`, `canary.py` → `seeds_screening.jsonl` | canary 적용·판정 규칙 (git 태그 `canary-v2`) |
+| `build_screening_set.py` → `screening_set.jsonl`·`.csv`·`_manifest.json`·`_summary.md` | 시드 70 × (17종 × 강도 0.3/0.7 + 원문) = 2,450행. 측정 입력은 `text` 필드, `changed=false` 행은 분석에서 제외 |
 
 ## 라이선스와 출처
 
 - KoreanGuardrail (kimchunsik03): 코드 Apache-2.0, 데이터 CC-BY-4.0
-- KOTOX (leeyejin1231): MIT. 규칙 사전·기호 집합을 가져와 재구현. `rules/KOTOX_LICENSE` 참고. `rules/iconic_cho.json`은 `rules/build_iconic_cho.py`로 생성
+- KOTOX (leeyejin1231): MIT. 규칙 사전·기호 집합을 가져와 재구현. `komutator/rules/KOTOX_LICENSE` 참고. `komutator/rules/iconic_cho.json`은 `komutator/rules/build_iconic_cho.py`로 생성
