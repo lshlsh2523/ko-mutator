@@ -1,0 +1,45 @@
+[
+  {
+    "name": "deepset",
+    "repo": "deepset/prompt-injections",
+    "role": "mixed",
+    "license": "Apache-2.0",
+    "note": "공격+정상 혼합, 독일어 포함"
+  },
+  {
+    "name": "gandalf",
+    "repo": "Lakera/gandalf_ignore_instructions",
+    "role": "attack",
+    "license": "MIT",
+    "note": "공격만 있음, 비밀번호 소재 편중"
+  },
+  {
+    "name": "xtram1",
+    "repo": "xTRam1/safe-guard-prompt-injection",
+    "role": "mixed",
+    "license": "미표기",
+    "note": "내부 실험용, 배포 금지"
+  },
+  {
+    "name": "koalpaca",
+    "repo": "beomi/KoAlpaca-RealQA",
+    "role": "benign",
+    "license": "CC-BY-SA-4.0",
+    "note": "한국어 원본, 접근 승인(gated) 필요"
+  },
+  {
+    "name": "hhrlhf",
+    "repo": "Anthropic/hh-rlhf",
+    "role": "benign",
+    "license": "MIT",
+    "allow_patterns": ["helpful-base/*", "README.md"],
+    "note": "helpful-base만 받음 (harmless-base는 유해 요청이라 정상으로 쓰면 안 됨)"
+  },
+  {
+    "name": "promptschat",
+    "repo": "fka/awesome-chatgpt-prompts",
+    "role": "benign",
+    "license": "CC0-1.0",
+    "note": "prompts.chat 원본"
+  }
+]

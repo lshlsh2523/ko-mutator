@@ -1,0 +1,6 @@
+deepset	deepset/prompt-injections	4f61ecb038e9c3fb77e21034b22511b523772cdd
+gandalf	Lakera/gandalf_ignore_instructions	04737b65e90a6794ec227012e4a255a7def6344b
+xtram1	xTRam1/safe-guard-prompt-injection	a3a877d608f37b7d20d9945671902df895ecdb46
+koalpaca	beomi/KoAlpaca-RealQA	a7df38a0b2cc187b72b40330af81e7b9f28dd95b
+hhrlhf	Anthropic/hh-rlhf	09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa
+promptschat	fka/awesome-chatgpt-prompts	fbea17f2045d053d27f1de9f099e9bfdbe55bf47
