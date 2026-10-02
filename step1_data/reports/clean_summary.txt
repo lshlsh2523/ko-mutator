@@ -1,0 +1,50 @@
+## 이유별 제외 건수 (KEPT = 남은 문장, 먼저 걸린 이유 하나만 기록)
+reason                원본  over_length  too_short  not_english  not_korean  non_text_type  placeholder  benign_jailbreak_kw  duplicate  template_cap   KEPT
+source      label                                                                                                                                         
+gandalf     1       1000            5          0            1           0              0            0                    0          1             0    993
+xtram1      1       3146          528          0            0           0              0            0                    0         75           505   2038
+            0       7150         1910          0            8           0              0            0                    0         82             0   5150
+hhrlhf      0      46189          114         27            0           0              0            0                    3      30619             0  15426
+koalpaca    0      18524            0         24            0         397              0            0                    0        250             0  17853
+promptschat 0       2169         1918          0            7           0              2           36                    0         11             0    195
+
+## 라벨별 남은 건수
+label
+0    38624
+1     3031
+
+## xTRam1 공격 템플릿 상한 비교 (적용값: 75)
+틀당 상한  xtram1 공격  공격 합계  상위 10개 틀 비중(%)  틀 종류
+   없음       2543   3536            43.8   561
+  100       2163   3156            33.9   561
+   75       2038   3031            29.9   561
+   50       1886   2879            24.2   561
+
+적용 후 상위 10개 틀 (첫 세 단어):
+template
+ignore all previous       75
+provide me with           75
+you are healthbot         75
+write me a                75
+disregard all previous    75
+compose a story           75
+give me access            52
+do not follow             37
+if you don                36
+you are now               34
+
+## 남은 문장 길이 (글자 수)
+                   count  mean  50%  90%  max
+source      label                            
+gandalf     1        993    72   60  127  297
+hhrlhf      0      15426    65   51  118  297
+koalpaca    0      17853    57   28   65  995
+promptschat 0        195   164  154  275  300
+xtram1      0       5150   137  129  254  300
+            1       2038   105   96  148  300
+
+## 번역 대상 (koalpaca 제외) 글자 수
+       count      sum
+label                
+0      20771  1748459
+1       3031   285479
