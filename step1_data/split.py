@@ -63,6 +63,8 @@ def build_kg_test():
 
     non_template = kg[kg[src_col] != "template_v1"]
     test = non_template[~non_template[id_col].isin(holdout)].copy()
+    if "subtype" in test.columns:  # 외국어 공격(E2)은 연구 범위(한국어) 밖이라 제외
+        test = test[test["subtype"] != "language_switch"]
     out = pd.DataFrame({
         "id": "kg_" + test[id_col].astype(str),
         "text": [normalize(t, "kg") for t in test[text_col]],
