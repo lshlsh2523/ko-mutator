@@ -1,2 +1,3 @@
 2026-10-03 00:31 | sample 20 | 이번 20건 2,035자 | 누적 20/5,731건 | 사용량 2,035 / 1,000,000자 사용 | deepl-python 1.32.0 | EN->KO, preserve_formatting=True
 2026-10-03 00:37 | full | 이번 4,311건 453,419자 | 누적 5,731/5,731건 | 사용량 558,346 / 1,000,000자 사용 | deepl-python 1.32.0 | EN->KO, preserve_formatting=True
+2026-10-03 01:05 | retranslate | 203건 19,080자 | glossary=yes, context=yes | 재번역 후에도 남은 대상 11건 | 사용량 577,426 / 1,000,000자
