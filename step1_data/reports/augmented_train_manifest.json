@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-10-04T02:21:59",
+  "augment": [
+    {
+      "technique": "yamin_swap",
+      "intensity": 0.7
+    },
+    {
+      "technique": "symbol_insert",
+      "intensity": 0.3
+    }
+  ],
+  "variant_seed": 20261003,
+  "seed_rule": "int(sha256(\"{VARIANT_SEED}|{id}|{technique}|{intensity}\").hexdigest()[:16], 16)",
+  "shuffle_seed": 20261003,
+  "fields": [
+    "id",
+    "text",
+    "label",
+    "source",
+    "seed_id",
+    "technique",
+    "intensity",
+    "changed",
+    "n_changed"
+  ],
+  "mutator_git": {
+    "commit": "7ecceda7c46d91c39d0afd5ae8cac3cdc5f67bcc",
+    "describe": "screening-set-v1-12-g7ecceda",
+    "dirty": false
+  },
+  "input": "train.jsonl",
+  "input_sha256": "855b688fa69b5e5d4d310b8a386ffaa3201a10b3e4b146d1362fa5048a12b9dc",
+  "output": "augmented_train.jsonl",
+  "output_sha256": "4bd41bf2896deee335a3fa752bf4c54cab0f6915a3b9de083adbebaaf141c6e1",
+  "rows": 14377,
+  "variants": 9568,
+  "dropped_unchanged": 50,
+  "length_ks_xtram1": {
+    "전체": 0.033,
+    "원문": 0.035,
+    "변형": 0.032,
+    "yamin_swap": 0.035,
+    "symbol_insert": 0.033
+  },
+  "leak_check": {
+    "valid.jsonl": 0,
+    "test.jsonl": 0,
+    "kg_test.jsonl": 0,
+    "obfuscated_test.jsonl": 0,
+    "obfuscated_kg_test.jsonl": 0
+  }
+}
