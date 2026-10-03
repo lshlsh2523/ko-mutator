@@ -1,0 +1,28 @@
+===== koelectra (monologg/koelectra-base-v3-discriminator, use_fast=True) =====
+[정규화 확인] ㉵래의 → ['[UNK]'] | 아래의 → ['아래', '##의'] | º → ['[UNK]'] | 으 → ['으']
+파일                         행      128 초과     최대 토큰      UNK 포함 행    UNK 토큰
+train                   4809     0 (0.00%)       125         0.1%     0.01%
+valid                    604     0 (0.00%)       101         0.2%     0.03%
+test                     604     0 (0.00%)       103         0.0%     0.00%
+kg_test                  172     0 (0.00%)        56         0.0%     0.00%
+augmented_train        14377     1 (0.01%)       130        62.0%     7.61%
+                    128 초과 예: [(130, 'xtram1_01417__symbol_insert__0.3')]
+obfuscated_test        20143   211 (1.05%)       232        30.3%     3.69%
+                    128 초과 예: [(232, 'xtram1_03348__filler_insert__0.7'), (229, 'xtram1_02293__filler_insert__0.7'), (222, 'xtram1_03348__qwerty__0.7')]
+obfuscated_kg_test      5705     0 (0.00%)       121        29.8%     3.74%
+
+===== mdeberta (microsoft/mdeberta-v3-base, use_fast=False) =====
+[정규화 확인] ㉵래의 → ['▁', '㉵', '래', '의'] | 아래의 → ['▁아', '래', '의'] | º → ['▁', 'º'] | 으 → ['▁', '으']
+파일                         행      128 초과     최대 토큰      UNK 포함 행    UNK 토큰
+train                   4809     4 (0.08%)       138         0.1%     0.01%
+                    128 초과 예: [(138, 'xtram1_01417'), (136, 'xtram1_02776'), (133, 'xtram1_00484')]
+valid                    604     1 (0.17%)       133         0.3%     0.01%
+                    128 초과 예: [(133, 'xtram1_00021')]
+test                     604     0 (0.00%)       127         0.0%     0.00%
+kg_test                  172     0 (0.00%)        65         0.0%     0.00%
+augmented_train        14377    87 (0.61%)       195        62.1%     4.55%
+                    128 초과 예: [(195, 'xtram1_02776__symbol_insert__0.3'), (193, 'xtram1_01417__symbol_insert__0.3'), (190, 'xtram1_00484__symbol_insert__0.3')]
+obfuscated_test        20143   334 (1.66%)       234        57.1%    12.47%
+                    128 초과 예: [(234, 'xtram1_01166__symbol_insert__0.7'), (233, 'xtram1_03348__symbol_insert__0.7'), (228, 'xtram1_02293__symbol_insert__0.7')]
+obfuscated_kg_test      5705     0 (0.00%)       115        56.4%    11.89%
+
